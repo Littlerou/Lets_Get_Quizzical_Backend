@@ -114,7 +114,7 @@ io.on('connection', socket => {
         }, 15000)
         setTimeout(() => {
             console.log('Q3')
-             socket.to(data.room).emit('load question', 2)
+             io.emit('load question', 2)
             
         }, 30000)
         setTimeout(() => {
