@@ -12,15 +12,15 @@ const io = require("socket.io")(server, {
 app.use(cors())
 app.use(express.json())
 
-const playersRoutes = require('./routes/players');
-const { SocketAddress } = require('net');
+// const playersRoutes = require('./routes/players');
+// const { SocketAddress } = require('net');
 
-app.use('/players', playersRoutes)
+// app.use('/players', playersRoutes)
 app.get('/', (req,res) => res.send('welcome to lets get quizzical'))
 
 // we have to use cors to connect our server with the client side so that it knows where the client lives
 // integrate our http server with a new instance of socket.io
-app.get('/', (req,res) => res.send('welcome to lets get quizzical'))
+// app.get('/', (req,res) => res.send('welcome to lets get quizzical'))
 
 
 
@@ -162,24 +162,6 @@ io.on('connection', socket => {
     
 });
 
-// io.of("/Room").on("connection", (socket) => {
-
-
-//     console.log(`Welcome to the room ${socket.id}`)
-//     console.log(`You are currently in rooms: ${socket.rooms}`)
-//     socket.on('join room', data => {
-//         if(io.sockets.adapter.rooms.get(data.room)){
-
-//             socket.join(data.room)
-//             console.log(`${socket.id} has just joined ${data.room}`)
-//             console.log('number of players in room: ',io.sockets.adapter.rooms.get(data.room).size)
-//             io.of("/Room").in(data.room).emit('room size', io.sockets.adapter.rooms.get(data.room).size)
-//         }else{
-//             socket.emit('join error', 'that room does not exist')
-//         }
-        
-//     })
-// });
 
 
 
@@ -187,12 +169,4 @@ io.on('connection', socket => {
 module.exports = server
 
 
-// socket connection will go here
 
-// socket.broadcast => send message to other sockets that isn't me 
-// everysocket is a room with it's own id
-// can't join room from client, needs to tell the server
-// // socket.on('join-room', room => {
-//   socket.join(room)
-// })
-// call back is always the last thing you pass
